@@ -56,4 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
-src/test/env.js
+src/env.js
+
+# Serverless directories
+.serverless
