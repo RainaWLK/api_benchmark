@@ -1,0 +1,45 @@
+{
+  "name": "api_benchmark",
+  "version": "1.0.0",
+  "description": "AWS API benchmark tool",
+  "main": "index.js",
+  "repository": "https://github.com/RainaWLK/api_benchmark.git",
+  "scripts": {
+    "transpile": "babel src -d build",
+    "deploy": "serverless deploy -v",
+    "package": "npm run transpile && serverless package",
+    "destroy": "serverless remove",
+    "start": "npm run transpile && cross-env NODE_ENV=development node build/index.js",
+    "help": "serverless --help"
+  },
+  "author": "RainkWLK <lukeshih72@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.1.1",
+    "serverless": "^1.23.0",
+    "serverless-offline": "^3.16.0",
+    "serverless-plugin-include-dependencies": "^3.0.0",
+    "serverless-webpack": "^3.1.1",
+    "webpack": "^3.6.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-ajv-json-schema": "^1.0.0",
+    "cross-env": "^5.1.1",
+    "mocha": "^4.0.1",
+    "lodash": "^4.17.4",
+    "query-string": "^5.0.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.5",
+    "supertest": "^3.0.0"
+  },
+  "optionalDependencies": {
+    "aws-sdk": "^2.128.0"
+  }
+}
