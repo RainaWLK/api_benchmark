@@ -7,7 +7,7 @@
   "scripts": {
     "transpile": "babel src -d build",
     "create": "serverless create --template aws-nodejs --path myService",
-    "deploy": "serverless deploy -v",
+    "deploy": "npm run transpile && serverless deploy -v",
     "package": "npm run transpile && serverless package",
     "destroy": "serverless remove",
     "start": "npm run transpile && cross-env NODE_ENV=development node build/index.js",
