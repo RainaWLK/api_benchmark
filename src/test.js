@@ -1,29 +1,25 @@
-import 'babel-polyfill'
-
-var chai = require('chai');
-let should = chai.should();
-
-let supertest = require('supertest');
-let expect = chai.expect;
-
+var rp = require('request-promise-native');
 let env = require('./env.js');
 
 
-chai.use(require('chai-ajv-json-schema'));
-//chai.use(require('chai-things'));
+async function runTest(){
+  let url = env.server+env.uri;
+  var options = {
+    uri: url,
+    json: true // Automatically parses the JSON string in the response
+  };
 
-let start_time;
+  try{
+    let start_time = Date.now();
+    let res = await rp(options);
+    
+    let time_exceed = Date.now() - start_time;
+    console.log("[INFO] "+url+" "+time_exceed);
+    return res;
+  }
+  catch(err){
+    throw err;
+  }
+}
 
-before(() => {
-  start_time = Date.now();
-});
-it('test', async () => {
-  let req = supertest(env.server);
-  let res = await req.get(env.uri);
-  res.statusCode.should.eql(200);
-});
-
-after(() => {
-  let time_exceed = Date.now() - start_time;
-  console.log(time_exceed);
-});
+exports.runTest = runTest;

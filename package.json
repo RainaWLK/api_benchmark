@@ -10,7 +10,7 @@
     "deploy": "npm run transpile && serverless deploy -v",
     "package": "npm run transpile && serverless package",
     "destroy": "serverless remove",
-    "start": "npm run transpile && cross-env NODE_ENV=development node build/index.js",
+    "start": "npm run transpile && cross-env NODE_ENV=development node local_handler.js",
     "help": "serverless --help"
   },
   "author": "RainkWLK <lukeshih72@gmail.com>",
