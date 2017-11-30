@@ -12,7 +12,7 @@ module.exports.main = (event, context, callback) => {
     }),
   };
 
-  test.runTest().then(() =>{
+  test.runTests().then(() =>{
     callback(null, response);
   }).catch(err => {
     callback(err);
